@@ -1,0 +1,3 @@
+26.sept 
+Elias - 2h soldered adapter for robot battery connector. Worked image processor and compiling new code.
+Andres - 2h Worked image processor and compiling new code.
