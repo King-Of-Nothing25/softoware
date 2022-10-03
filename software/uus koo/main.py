@@ -7,10 +7,15 @@ import time
 import serial
 import struct
 
+def sender(tagumine, vasak, parem, viskur, disable_failsafe, ser):
+  cmd = struct.pack('<hhhHBH', tagumine, vasak, parem, viskur, disable_failsafe, 0xAAAA)
+  ser.write(cmd)
+
+
 def main_loop():
   debug = True
 
-  ser = serial.Serial("")
+  ser = serial.Serial("/dev/ttyACM0")
     
   cam = camera.RealsenseCamera(exposure = 100)
     
@@ -44,6 +49,8 @@ def main_loop():
            robo_y -= 320
            print("x: ",processedData.balls[0].x)
            print("y: ",processedData.balls[0].y)
+           if len(processedData.balls) >= 1:
+            sender(0, 10, 10, 0, 0, ser)
         except:
           pass
 
@@ -70,6 +77,8 @@ def main_loop():
   finally:
     cv2.destroyAllWindows()
     processor.stop()
+
+
 
 main_loop()
 '''
