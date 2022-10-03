@@ -42,20 +42,19 @@ def main_loop():
         print("FPS: {}, framecount: {}".format(fps, frame_cnt))
         print("ball_count: {}".format(len(processedData.balls)))
         try:              
-           print(processedData.balls[0].size)
-           robo_x =processedData.balls[0].x
-           robo_x -= 424
-           robo_y =processedData.balls[0].y
-           robo_y -= 320
-           print("x: ",processedData.balls[0].x)
-           print("y: ",processedData.balls[0].y)
-           if len(processedData.balls) >= 1:
-            sender(0, 10, 10, 0, 0, ser)
+          print(processedData.balls[0].size)
+          robo_x =processedData.balls[0].x
+          robo_x -= 424
+          robo_y =processedData.balls[0].y
+          robo_y -= 320
+          print("x: ",processedData.balls[0].x)
+          print("y: ",processedData.balls[0].y)
+          sender(10, 20, 30, 0, 0, ser)
         except:
           pass
 
         #send motor data
-        ser = serial.
+
 
         #if (robo_y == 320 & robo_x == 424):
         #    print("nice")
