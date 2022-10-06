@@ -7,6 +7,7 @@ import time
 import serial
 import struct
 
+
 def sender(tagumine, vasak, parem, viskur, disable_failsafe, ser):
   cmd = struct.pack('<hhhHBH', tagumine, vasak, parem, viskur, disable_failsafe, 0xAAAA)
   ser.write(cmd)
@@ -49,6 +50,17 @@ def main_loop():
           robo_y -= 320
           print("x: ",processedData.balls[0].x)
           print("y: ",processedData.balls[0].y)
+'''          if x < 10 and x > -10:
+            parem = 100
+            vasak = 100
+          elif abs(x) > 10
+            x = x/4.24
+            parem += x
+            vasak -= x
+'''
+
+          
+          
           sender(10, 20, 30, 0, 0, ser)
         except:
           pass

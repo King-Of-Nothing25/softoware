@@ -7,8 +7,21 @@ import tkinter as tk
 
 
 
+rot_speed = 0.5 * x
 
+def liigu(x_speed, y_speed, rot_speed):
 
+    angle_deg = 0
+
+    robotSpeed = (sqrt(x_speed**2 + y_speed**2))
+
+    angle_deg = np.degrees(math.atan2(x_speed, y_speed))
+
+    distance = math.sqrt(math.pow(x_speed, 2) + math.pow(y_speed, 2))
+
+    tagumine_kiirus = robotSpeed * math.cos(angle_deg - 0) + kaugus_kesk * rot_speed
+    vasak_kiirus = robotSpeed * math.cos(angle_deg - 240) + kaugus_kesk * rot_speed
+    parem_kiirus = robotSpeed * math.cos(angle_deg - 120) + kaugus_kesk * rot_speed
 
 
 
@@ -130,21 +143,6 @@ class TurtleRobot(IRobotMotion):
 
         distance = math.sqrt(math.pow(x_speed, 2) + math.pow(y_speed, 2))
 
-        distance_step = distance / float(self.steps)
-        angel_step = np.degrees(rot_speed / float(self.steps))
-
-        self.turtle_obj.penup()
-        self.turtle_obj.reset()
-        self.turtle_obj.right(angle_deg - 90)
-        self.turtle_obj.pendown()
-
-        for i in range(0, self.steps):
-            self.turtle_obj.right(angel_step)
-            self.turtle_obj.forward(distance_step)
-
-        self.turtle_obj.penup()
-        self.screen.update()
-
 
 class TurtleOmniRobot(TurtleRobot):
     def __init__(self, name="Default turtle omni robot"):
@@ -153,10 +151,9 @@ class TurtleOmniRobot(TurtleRobot):
         # Wheel angles
         self.motor_config = [30, 150, 270]
 
-    def move(self, x_speed, y_speed, rot_speed):
-        speeds = [0, 0, 0]
 
-        # This is where you need to calculate the speeds for robot motors
+    def liigu(self, x_speed, y_speed, rot_speed):
+
 
         simulated_speeds = self.speeds_to_direction(speeds)
 
